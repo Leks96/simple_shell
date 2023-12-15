@@ -124,12 +124,6 @@ char *find_path(info_t *, char *, char *);
 /* loophsh.c */
 int loophsh(char **);
 
-/* toem_errors.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
-
 /* toem_string.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
@@ -165,12 +159,18 @@ int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-/* toem_errors1.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+/* to sh_err.c */
+void sh_input(char *str);
+int sh_putchar(char c);
+int put_fd(char c, int fd);
+int put_st(char *str, int fd);
+
+/* to sh_moreerr.c */
+int error_atoi(char *str);
+void print_error(info_t *sh_info, char *estr);
+int print_dec(int input, int fd);
+char *convert_num(long int num, int base, int flags);
+void cancel_comments(char *buf);
 
 /* to sh_builtin.c */
 int sh_exit(info_t *sh_info);
