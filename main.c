@@ -39,6 +39,6 @@ int main(int ac, char **av)
 	}
 	populate_env_list(inf);
 	read_history(inf);
-	hsh(inf, av);
+	sh_loop(inf, av);
 	return (EXIT_SUCCESS);
 }

@@ -1,4 +1,3 @@
-
 #include "shell.h"
 
 /**
@@ -49,7 +48,7 @@ int set_sh_env(info_t *sh_info)
 		_eputs("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (_setenv(sh_info, sh_info->argv[1], sh_info->argv[2]))
+	if (sh_setenv(sh_info, sh_info->argv[1], sh_info->argv[2]))
 		return (0);
 	return (1);
 }
@@ -70,7 +69,7 @@ int unset_sh_env(info_t *sh_info)
 		return (1);
 	}
 	for (i = 1; i <= sh_info->argc; i++)
-		_unsetenv(sh_info, sh_info->argv[i]);
+		sh_unsetenv(sh_info, sh_info->argv[i]);
 
 	return (0);
 }

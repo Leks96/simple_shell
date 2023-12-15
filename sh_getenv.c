@@ -18,10 +18,10 @@ char **sh_getenv(info_t *sh_info)
 }
 
 /**
- * _unsetenv - Remove an environment ariable
+ * sh_unsetenv - Remove an environment ariable
  * @sh_info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
- *  Return: 1 on delete, 0 otherwise
+ * Return: 1 on delete, 0 otherwise
  * @envar: the string env var property
  */
 int sh_unsetenv(info_t *sh_info, char *envar)

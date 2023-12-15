@@ -36,7 +36,6 @@
 
 extern char **environ;
 
-
 /**
  * struct liststr - singly linked list
  * @num: the number field
@@ -69,7 +68,7 @@ typedef struct liststr
  *@status: the return status of the last exec'd command
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type ||, &&, ;
- *@readfd: the fd from which to read line input
+ *@readfile_d: the fd from which to read line input
  *@histcount: the history line number count
  */
 typedef struct passinfo
@@ -91,7 +90,7 @@ typedef struct passinfo
 
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
-	int readfd;
+	int readfile_disc;
 	int histcount;
 } info_t;
 
@@ -212,10 +211,10 @@ int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
 
 /* toem_lists.c */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
+list_t *add_envNode(list_t **, const char *, int);
+list_t *add_envNode_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
+int delete_envNode_at_index(list_t **, unsigned int);
 void free_list(list_t **);
 
 /* toem_lists1.c */
