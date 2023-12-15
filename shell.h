@@ -172,24 +172,29 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
-/* toem_builtin.c */
-int _myexit(info_t *);
-int _mycd(info_t *);
-int _myhelp(info_t *);
+/* to sh_builtin.c */
+int sh_exit(info_t *sh_info);
+int sh_cd(info_t *sh_info);
+int sh_help(info_t *sh_info);
 
-/* toem_builtin1.c */
-int _myhistory(info_t *);
-int _myalias(info_t *);
+/* to sh_buitltin.c */
+int sh_history(info_t *sh_info);
+int unset_alias(info_t *sh_info, char *str);
+int set_alias(info_t *sh_info, char *str);
+int print_alias(list_t *node);
+int sh_alias(info_t *sh_info);
 
-/*toem_getline.c */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+/*to sh_getline.c */
+ssize_t sh_input_buf(info_t *sh_info, char **buf, size_t *len);
+ssize_t sh_getinput(info_t *sh_info);
+ssize_t sh_readbuf(info_t *sh_info, char *buf, size_t *i);
+int sh_getline(info_t *sh_info, char **ptr, size_t *length);
+void Handler(__attribute__((unused))int sig_num);
 
-/* toem_getinfo.c */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+/* to sh_getinfo.c */
+void init_info(info_t *sh_info);
+void set_info(info_t *sh_info, char **av);
+void free_info(info_t *sh_info, int freeall);
 
 /* to sh_env.c */
 int sh_env(info_t *sh_info);
